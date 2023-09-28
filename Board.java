@@ -19,7 +19,7 @@ public class Board
                 {
                     gameBoard[r][c] = '~';
                 }
-                System.out.print(gameBoard[r][c] + " ");
+                System.out.print(gameBoard[r][c] + "  ");
             }
             System.out.print("\n");
         }
@@ -31,7 +31,10 @@ public class Board
         if(start)
         {
             System.out.println("Please start placing your ships.\nDestroyer (2 pegs)\n Peg 1 Row:");
-            
+            int row = scan.nextInt();
+            System.out.println("\nPeg 1 Collumn:")
+            int col = scan.nextInt();
+            //need to do more (make game board here a ship)
         }
     }
 
