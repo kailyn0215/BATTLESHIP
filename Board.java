@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Board
 {
     int numRows = 10;
@@ -8,6 +10,7 @@ public class Board
 
     public void printBoard()
     {
+        //gameBoard[3][3] = 1;
         for(int r = 0; r < numRows; r++)
         {
             for(int c = 0; c < numCols; c++)
@@ -16,6 +19,21 @@ public class Board
             }
             System.out.print("\n");
         }
+    }
+
+    public void getBoard(boolean start)
+    {
+        Scanner scan = new Scanner(System.in);
+        if(start)
+        {
+            System.out.println("Please start placing your ships.\nDestroyer (2 pegs)\n Peg 1 Row:");
+            
+        }
+    }
+
+    public void setBoard()
+    {
+
     }
     
 }
