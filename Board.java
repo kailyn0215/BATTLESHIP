@@ -31,7 +31,7 @@ public class Board
         if(start)
         {
             System.out.println("Please start placing your ships.\nDestroyer (2 pegs)\n Peg 1 Row:");
-
+            
         }
     }
 
