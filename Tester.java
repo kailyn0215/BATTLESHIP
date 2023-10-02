@@ -7,7 +7,7 @@ public class Tester
         player.printBoard(true);
         System.out.println("Computer's Board:");
         comp.printBoard(true);
-        player.setBoardPlayer();
+        player.setBoardManual();
         player.printBoard(false);
     }
 }

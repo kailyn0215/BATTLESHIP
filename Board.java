@@ -26,7 +26,7 @@ public class Board
         }
     }
 
-    public void setBoardPlayer()
+    public void setBoardManual()
     {
         int row;
         int col;
@@ -89,7 +89,7 @@ public class Board
             }
     }
 
-    public void setBoardComputer()
+    public void setBoardAuto()
     {
         
     }
