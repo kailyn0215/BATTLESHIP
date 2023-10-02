@@ -6,8 +6,11 @@ public class Board
     int numCols = 10;
     int[] ships = {2, 3, 3, 4, 5}; // or new int[5]
 
+
     char[][] gameBoard = new char[numRows][numCols];
 
+
+    //prints the board and sets up default if new game+
     public void printBoard(boolean start)
     {
         //gameBoard[3][3] = 1;
@@ -26,6 +29,8 @@ public class Board
         }
     }
 
+
+    //uses user input to set up ships
     public void setBoardManual()
     {
         int row;
@@ -34,7 +39,7 @@ public class Board
         Scanner scan = new Scanner(System.in);
 
             //destroyer
-            System.out.print("\nPlease start placing your ships.\n\nDestroyer (2 pegs)");
+            System.out.print("\n\n\nPlease start placing your ships.\n\nDestroyer (2 pegs)");
             for(int d = 1; d < 3; d++)
             {
                 System.out.print("\nPeg " + d + " Row: ");
@@ -89,6 +94,8 @@ public class Board
             }
     }
 
+
+    //sets the board automatically
     public void setBoardAuto()
     {
         
