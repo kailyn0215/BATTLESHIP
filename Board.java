@@ -6,6 +6,12 @@ public class Board
     int numCols = 10;
     int[] ships = {2, 3, 3, 4, 5}; // or new int[5]
 
+    boolean[][] destroyer;
+    boolean[][] submarine;
+    boolean[][] crusier;
+    boolean[][] battleship;
+    boolean[][] carrier;
+
 
     char[][] gameBoard = new char[numRows][numCols];
 
@@ -98,7 +104,13 @@ public class Board
     //sets the board automatically
     public void setBoardAuto()
     {
-        
+        //destroyer:
+        int row = (int)(Math.random() * 10);
+        int col = (int)(Math.random() * 10);
+        boolean up = Math.random() < 0.5; //the ship is vertical if number is less than 5
+
+        destroyer[row][col] = true;
+        gameBoard[row][col] = '★';
     }
     
 }
