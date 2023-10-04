@@ -144,15 +144,24 @@ public class Board
         }
         else
         {
-            destroyer[row][col - 1] = true;
+            destroyer[row][col - 1] = true; // adds second point up down if more than 0.75
         }
     }
 
-    public void guessManual()
+    // allows the user to guess the opponents ships manually
+    public void guessManual() 
     {
-        Scanner guess = new Scanner()
+        Scanner guess = new Scanner(System.in);
         System.out.print("\n\nPlease enter coordinates to guess where your opponents ships are located.\n\nRow: ");
-
+        int gR = guess.nextInt();
+        System.out.print("\n\nColumn: ");
+        int gC = guess.nextInt();
+        if(gameBoard[gR][gC] == '★')
+        {
+            System.out.print("Hit!");
+            gameBoard[gR][gC] = 'X';
+            // need to add something to keep track off what ship is hit
+        }
     }
     
 }
