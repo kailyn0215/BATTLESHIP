@@ -16,13 +16,13 @@ public class Tester
         comp.printBoard(true);
         player1.setBoardManual();
         player1.printBoard(false);
-        if(players == 1)
+        /*if(players == 1)
         {
             System.out.println("\n\nPlayer's Board:\n");
             player1.printBoard(true);
             System.out.println("\n\nComputer's Board:\n");
             comp.printBoard(true);
-        }
+        }*/
         
         
         

@@ -52,10 +52,10 @@ public class Board
                 {
                     System.out.print("\nPeg " + d + " Row: ");
                     row = scan.nextInt();
-                    System.out.print("\nPeg " + d + " Collumn: ");
+                    System.out.print("\nPeg " + d + " Column: ");
                     col = scan.nextInt();
                 }
-                while(gameBoard[row][col] == '★');
+                while(gameBoard[row][col] == '★' && row > 10 && col > 10);
                 gameBoard[row][col] = '★';
             }
             
@@ -67,10 +67,10 @@ public class Board
                 {
                     System.out.print("\nPeg " + s + " Row: ");
                     row = scan.nextInt();
-                    System.out.print("\nPeg " + s + " Collumn: ");
+                    System.out.print("\nPeg " + s + " Column: ");
                     col = scan.nextInt();
                 }
-                while(gameBoard[row][col] == '★');
+                while(gameBoard[row][col] == '★' && row > 10 && col > 10);
                 gameBoard[row][col] = '★';
             }
 
@@ -82,7 +82,7 @@ public class Board
                 {
                     System.out.print("\nPeg " + c + " Row: ");
                     row = scan.nextInt();
-                    System.out.print("\nPeg " + c + " Collumn: ");
+                    System.out.print("\nPeg " + c + " Column: ");
                     col = scan.nextInt();
                 }
                 while(gameBoard[row][col] == '★');
@@ -97,7 +97,7 @@ public class Board
                 {
                     System.out.print("\nPeg " + b + " Row: ");
                     row = scan.nextInt();
-                    System.out.print("\nPeg " + b + " Collumn: ");
+                    System.out.print("\nPeg " + b + " Column: ");
                     col = scan.nextInt();
                 }
                 while(gameBoard[row][col] == '★');
@@ -112,7 +112,7 @@ public class Board
                 {
                     System.out.print("\nPeg " + r + " Row: ");
                     row = scan.nextInt();
-                    System.out.print("\nPeg " + r + " Collumn: ");
+                    System.out.print("\nPeg " + r + " Column: ");
                     col = scan.nextInt();
                 }
                 while(gameBoard[row][col] == '★');
@@ -127,10 +127,32 @@ public class Board
         //destroyer:
         int row = (int)(Math.random() * 10); // from 0 to 9
         int col = (int)(Math.random() * 10);
-        int up = (int)(Math.random() * 10); //the ship is vertical if number is less than 5
+        double up = Math.random(); // up down left or right
 
         destroyer[row][col] = true;
-        gameBoard[row][col] = '★';
+        if(up < 0.25)
+        {
+            destroyer[row - 1][col] = true; // adds second point to the left if less than 0.26
+        }
+        else if(up < 0.5)
+        {
+            destroyer[row + 1][col] = true; // adds second point to the right if less than 0.26
+        }
+        else if(up < 0.75)
+        {
+            destroyer[row][col + 1] = true; // adds second point up one if less than 0.26
+        }
+        else
+        {
+            destroyer[row][col - 1] = true;
+        }
+    }
+
+    public void guessManual()
+    {
+        Scanner guess = new Scanner()
+        System.out.print("\n\nPlease enter coordinates to guess where your opponents ships are located.\n\nRow: ");
+
     }
     
 }
