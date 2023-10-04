@@ -48,10 +48,15 @@ public class Board
             System.out.print("\n\n\nPlease start placing your ships.\n\nDestroyer (2 pegs)");
             for(int d = 1; d < 3; d++)
             {
-                System.out.print("\nPeg " + d + " Row: ");
-                row = scan.nextInt();
-                System.out.print("\nPeg " + d + " Collumn: ");
-                col = scan.nextInt();
+                do
+                {
+                    System.out.print("\nPeg " + d + " Row: ");
+                    row = scan.nextInt();
+                    System.out.print("\nPeg " + d + " Collumn: ");
+                    col = scan.nextInt();
+                    gameBoard[row][col] = '★';
+                }
+                while(gameBoard[row][col] == '★');
                 gameBoard[row][col] = '★';
             }
             
@@ -70,10 +75,15 @@ public class Board
             System.out.print("\n\nCrusier (3 pegs)");
             for(int c = 1; c < 4; c++)
             {
-                System.out.print("\nPeg " + c + " Row: ");
-                row = scan.nextInt();
-                System.out.print("\nPeg " + c + " Collumn: ");
-                col = scan.nextInt();
+                do
+                {
+                    System.out.print("\nPeg " + d + " Row: ");
+                    row = scan.nextInt();
+                    System.out.print("\nPeg " + d + " Collumn: ");
+                    col = scan.nextInt();
+                    gameBoard[row][col] = '★';
+                }
+                while(gameBoard[row][col] == '★');
                 gameBoard[row][col] = '★';
             }
 
@@ -81,10 +91,15 @@ public class Board
             System.out.print("\n\nBattleship (4 pegs)");
             for(int b = 1; b < 5; b++)
             {
-                System.out.print("\nPeg " + b + " Row: ");
-                row = scan.nextInt();
-                System.out.print("\nPeg " + b + " Collumn: ");
-                col = scan.nextInt();
+                do
+                {
+                    System.out.print("\nPeg " + d + " Row: ");
+                    row = scan.nextInt();
+                    System.out.print("\nPeg " + d + " Collumn: ");
+                    col = scan.nextInt();
+                    gameBoard[row][col] = '★';
+                }
+                while(gameBoard[row][col] == '★');
                 gameBoard[row][col] = '★';
             }
 
@@ -92,10 +107,15 @@ public class Board
             System.out.print("\n\nCarrier (5 pegs)");
             for(int r = 1; r < 6; r++)
             {
-                System.out.print("\nPeg " + r + " Row: ");
-                row = scan.nextInt();
-                System.out.print("\nPeg " + r + " Collumn: ");
-                col = scan.nextInt();
+                do
+                {
+                    System.out.print("\nPeg " + d + " Row: ");
+                    row = scan.nextInt();
+                    System.out.print("\nPeg " + d + " Collumn: ");
+                    col = scan.nextInt();
+                    gameBoard[row][col] = '★';
+                }
+                while(gameBoard[row][col] == '★');
                 gameBoard[row][col] = '★';
             }
     }
@@ -105,9 +125,9 @@ public class Board
     public void setBoardAuto()
     {
         //destroyer:
-        int row = (int)(Math.random() * 10);
+        int row = (int)(Math.random() * 10); // from 0 to 9
         int col = (int)(Math.random() * 10);
-        boolean up = Math.random() < 0.5; //the ship is vertical if number is less than 5
+        int up = (int)(Math.random() * 10); //the ship is vertical if number is less than 5
 
         destroyer[row][col] = true;
         gameBoard[row][col] = '★';
