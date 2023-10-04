@@ -54,7 +54,6 @@ public class Board
                     row = scan.nextInt();
                     System.out.print("\nPeg " + d + " Collumn: ");
                     col = scan.nextInt();
-                    gameBoard[row][col] = '★';
                 }
                 while(gameBoard[row][col] == '★');
                 gameBoard[row][col] = '★';
@@ -64,10 +63,14 @@ public class Board
             System.out.print("\n\nSubmarine (3 pegs)");
             for(int s = 1; s < 4; s++)
             {
-                System.out.print("\nPeg " + s + " Row: ");
-                row = scan.nextInt();
-                System.out.print("\nPeg " + s + " Collumn: ");
-                col = scan.nextInt();
+                do
+                {
+                    System.out.print("\nPeg " + s + " Row: ");
+                    row = scan.nextInt();
+                    System.out.print("\nPeg " + s + " Collumn: ");
+                    col = scan.nextInt();
+                }
+                while(gameBoard[row][col] == '★');
                 gameBoard[row][col] = '★';
             }
 
@@ -77,11 +80,10 @@ public class Board
             {
                 do
                 {
-                    System.out.print("\nPeg " + d + " Row: ");
+                    System.out.print("\nPeg " + c + " Row: ");
                     row = scan.nextInt();
-                    System.out.print("\nPeg " + d + " Collumn: ");
+                    System.out.print("\nPeg " + c + " Collumn: ");
                     col = scan.nextInt();
-                    gameBoard[row][col] = '★';
                 }
                 while(gameBoard[row][col] == '★');
                 gameBoard[row][col] = '★';
@@ -93,11 +95,10 @@ public class Board
             {
                 do
                 {
-                    System.out.print("\nPeg " + d + " Row: ");
+                    System.out.print("\nPeg " + b + " Row: ");
                     row = scan.nextInt();
-                    System.out.print("\nPeg " + d + " Collumn: ");
+                    System.out.print("\nPeg " + b + " Collumn: ");
                     col = scan.nextInt();
-                    gameBoard[row][col] = '★';
                 }
                 while(gameBoard[row][col] == '★');
                 gameBoard[row][col] = '★';
@@ -109,11 +110,10 @@ public class Board
             {
                 do
                 {
-                    System.out.print("\nPeg " + d + " Row: ");
+                    System.out.print("\nPeg " + r + " Row: ");
                     row = scan.nextInt();
-                    System.out.print("\nPeg " + d + " Collumn: ");
+                    System.out.print("\nPeg " + r + " Collumn: ");
                     col = scan.nextInt();
-                    gameBoard[row][col] = '★';
                 }
                 while(gameBoard[row][col] == '★');
                 gameBoard[row][col] = '★';
