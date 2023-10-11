@@ -17,10 +17,18 @@ public class Board
 
 
     //prints the board and sets up default if new game+
-    public void printBoard(boolean start)
+    public void printBoard(boolean start, int numCols, int numRows)
     {
         //gameBoard[3][3] = 1;
-        System.out.print("   0  1  2  3  4  5  6  7  8  9");
+        if(numCols == 10)
+        {
+            System.out.print("   0  1  2  3  4  5  6  7  8  9");
+        }
+        else
+        {
+            System.out.print("   0  1  2  3  4  5  6  7");
+        }
+        
         for(int r = 0; r < numRows; r++)
         {
             System.out.print("\n" + r + "  ");
@@ -85,7 +93,7 @@ public class Board
                     System.out.print("\nPeg " + c + " Column: ");
                     col = scan.nextInt();
                 }
-                while(gameBoard[row][col] == '★');
+                while(gameBoard[row][col] == '★' && row > 10 && col > 10);
                 gameBoard[row][col] = '★';
             }
 
@@ -100,7 +108,7 @@ public class Board
                     System.out.print("\nPeg " + b + " Column: ");
                     col = scan.nextInt();
                 }
-                while(gameBoard[row][col] == '★');
+                while(gameBoard[row][col] == '★' && row > 10 && col > 10);
                 gameBoard[row][col] = '★';
             }
 
@@ -115,7 +123,7 @@ public class Board
                     System.out.print("\nPeg " + r + " Column: ");
                     col = scan.nextInt();
                 }
-                while(gameBoard[row][col] == '★');
+                while(gameBoard[row][col] == '★' && row > 10 && col > 10);
                 gameBoard[row][col] = '★';
             }
     }
