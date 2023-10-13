@@ -6,17 +6,24 @@ public class Board
     int numCols = 10;
     int[] ships = {2, 3, 3, 4, 5}; // or new int[5]
 
-    boolean[][] destroyer;
-    boolean[][] submarine;
-    boolean[][] crusier;
-    boolean[][] battleship;
-    boolean[][] carrier;
+    int destroyer = 0 ; // 2 hp
+    int submarine = 0; // 3 hp
+    int crusier = 0; // 3 hp
+    int battleship = 0; // 4 hp
+    int carrier = 0; // 5 hp
+
+    // need 17 hits to win the game
+    int hits1 = 0; // p1
+    int hits2 = 0; // p2
+    int hitsc = 0; // computer
+
+    boolean end;
+
+    char[][] gameBoard = new char[numRows][numCols]; // makes a new game board based off of the number of columns and number of rows
+    char[][] tracker = new char[numRows][numCols]; // keeps track of diff ships maybe ??? cant quite figure out how to do that yet
 
 
-    char[][] gameBoard = new char[numRows][numCols];
-
-
-    public void printBoard(boolean start, int numCols, int numRows) //prints the board and sets up default if new game+
+    public void printBoard(boolean start, int numCols, int numRows) // prints the board and sets up default if new game+
     {
         //gameBoard[3][3] = 1;
         if(numCols == 10)
@@ -63,6 +70,7 @@ public class Board
                 }
                 while(gameBoard[row][col] == '★' && row > 10 && col > 10);
                 gameBoard[row][col] = '★';
+                tracker[row][col] = 'd';
             }
             
             //sub
@@ -78,6 +86,7 @@ public class Board
                 }
                 while(gameBoard[row][col] == '★' && row > 10 && col > 10);
                 gameBoard[row][col] = '★';
+                tracker[row][col] = 's';
             }
 
             //crusier
@@ -93,6 +102,7 @@ public class Board
                 }
                 while(gameBoard[row][col] == '★' && row > 10 && col > 10);
                 gameBoard[row][col] = '★';
+                tracker[row][col] = 'c';
             }
 
             //battleship
@@ -108,6 +118,7 @@ public class Board
                 }
                 while(gameBoard[row][col] == '★' && row > 10 && col > 10);
                 gameBoard[row][col] = '★';
+                tracker[row][col] = 'b';
             }
 
             //carrier
@@ -123,35 +134,136 @@ public class Board
                 }
                 while(gameBoard[row][col] == '★' && row > 10 && col > 10);
                 gameBoard[row][col] = '★';
+                tracker[row][col] = 'r';
             }
     }
-
 
     //sets the board automatically
     public void setBoardAuto()
     {
-        //destroyer:
+        // need to continue with the different ships + make it so that they dont collide with each other :( (just didnt have time to fill it out yet)
+
+        // destroyer:
         int row = (int)(Math.random() * 10); // from 0 to 9
         int col = (int)(Math.random() * 10);
         double up = Math.random(); // up down left or right
 
-        destroyer[row][col] = true;
-        if(up < 0.25)
+        tracker[row][col] = 'd';
+        if(up < 0.25) // up 1
         {
-            destroyer[row - 1][col] = true; // adds second point to the left if less than 0.26
+            if (col == 9) // unless on bottom of grid already
+            {
+                col = col--;
+            }
+            else
+            {
+                col = col++;
+            }
+            tracker[row][col] = 'd';
         }
-        else if(up < 0.5)
+        else if(up < 0.5) // down 1
         {
-            destroyer[row + 1][col] = true; // adds second point to the right if less than 0.26
+            if (col == 0) // unless on top of grid
+            {
+                col = col++;
+            }
+            else
+            {
+                col = col--;
+            }
+            tracker[row][col] = 'd';
         }
-        else if(up < 0.75)
+        else if(up < 0.75) // left 1
         {
-            destroyer[row][col + 1] = true; // adds second point up one if less than 0.26
+            if (row == 0) // unless on left of grid
+            {
+                row = row++;
+            }
+            else
+            {
+                row = row--;
+            }
+            tracker[row][col] = 'd';
         }
-        else
+        else // right 1
         {
-            destroyer[row][col - 1] = true; // adds second point up down if more than 0.75
+            if (row == 0) // unless on right of grid
+            {
+                row = row--;
+            }
+            else
+            {
+                row = row++;
+            }
+            tracker[row][col] = 'd';
         }
+
+        // submarine
+        row = (int)(Math.random() * 10); // from 0 to 9
+        col = (int)(Math.random() * 10);
+        up = Math.random(); // up down left or right
+
+        tracker[row][col] = 's';
+
+        if(up < 0.25) // up 1
+        {
+            if (col == 9) // unless on bottom of grid already
+            {
+                col = col--;
+            }
+            else
+            {
+                col = col++;
+            }
+            tracker[row][col] = 's';
+        }
+        else if(up < 0.5) // down 1
+        {
+            if (col == 0) // unless on top of grid
+            {
+                col = col++;
+            }
+            else
+            {
+                col = col--;
+            }
+            tracker[row][col] = 's';
+        }
+        else if(up < 0.75) // left 1
+        {
+            if (row == 0) // unless on left of grid
+            {
+                row = row++;
+            }
+            else
+            {
+                row = row--;
+            }
+            tracker[row][col] = 's';
+        }
+        else // right 1
+        {
+            if (row == 0) // unless on right of grid
+            {
+                row = row--;
+            }
+            else
+            {
+                row = row++;
+            }
+            tracker[row][col] = 's';
+        }
+
+    }
+
+    public void play()
+    {
+        do
+        {
+            guessPlayer();
+            guessComp();
+        }
+        while(end = false);
     }
 
     // allows the user to guess the opponents ships
@@ -162,17 +274,67 @@ public class Board
         int gR = guess.nextInt();
         System.out.print("\n\nColumn: ");
         int gC = guess.nextInt();
-        if(gameBoard[gR][gC] == '★')
+        if(tracker[gR][gC] == 'd' || tracker[gR][gC] == 's' || tracker[gR][gC] == 'c' || tracker[gR][gC] == 'b' || tracker[gR][gC] == 'r') // need to make it so computer ships dont show the star
         {
             System.out.print("Hit!");
             gameBoard[gR][gC] = 'X';
+            hits1++;
+            if(tracker[gR][gC] == 'd')
+            {
+                destroyer++;
+                hits1++;
+            }
+            else if(tracker[gR][gC] == 's')
+            {
+                submarine++;
+                hits1++;
+            }
+            else if(tracker[gR][gC] == 's')
+            {
+                submarine++;
+                hits1++;
+            }
+            else if(tracker[gR][gC] == 'c')
+            {
+                crusier++;
+                hits1++;
+            }
+            else if(tracker[gR][gC] == 'b')
+            {
+                battleship++;
+                hits1++;
+            }
+            else if(tracker[gR][gC] == 'r')
+            {
+                carrier++;
+                hits1++;
+            }
             // need to add something to keep track off what ship is hit
         }
+        win();
     }    
 
     public void guessComp()
     {
         
     }
-    
+
+    public void win()
+    {
+        if(hits1 == 17)
+        {
+            System.out.println("Congrats! Player 1 wins!");
+            end = true;
+        }
+        else if (hits2 == 17)
+        {
+            System.out.println("Congrats! Player 2 wins!");
+            end = true;
+        }
+        else if (hitsc == 17)
+        {
+            System.out.println("Sorry! The computer wins!");
+            end = true;
+        }
+    }
 }

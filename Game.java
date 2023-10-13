@@ -5,6 +5,7 @@ public class Game
     public Board player1 = new Board();
     public Board comp = new Board();
     public Board player2 = new Board();
+
     public void start() //starts the game + prompts the user for game mode + lets them set up their board
     {
         
@@ -88,7 +89,7 @@ public class Game
                 player1.setBoardManual(); // p1 board gets set manually
             }
         }
-
+        player1.play();
     }
 
     public void text() // introductory text to the game
