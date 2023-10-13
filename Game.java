@@ -32,9 +32,9 @@ public class Game
         if(mode == 2) // if 2 player
         {
             System.out.println("\n\nPlayer 1's Board:\n");
-            player1.printBoard(true, x, x);
+            player1.printBoard(true, x, x, false);
             System.out.println("\n\nPlayer 2's Board:\n");
-            comp.printBoard(true, x, x);
+            player2.printBoard(true, x, x, false);
             do // ask p1 if they want to manually set up their board
             {
                 System.out.println("\n\nPlayer 1:\n\n1 - Manual Board Creation\n2 - Auto Board Creation");
@@ -43,7 +43,7 @@ public class Game
             while(create > 2 || create < 1); // while out of bounds
             if(create == 2) // if auto
             {
-                player1.setBoardAuto(); // p1 board gets set automatically
+                player1.setBoardAuto(true); // p1 board gets set automatically
             }
             else if(create == 1) // if manual
             {
@@ -57,20 +57,34 @@ public class Game
             while(create > 2 || create < 1); 
             if(create == 2)
             {
-                player2.setBoardAuto(); // p2 board gets set automatically
+                player2.setBoardAuto(true); // p2 board gets set automatically
             }
             else if(create == 1)
             {
                 player2.setBoardManual(); // p2 board gets set manually
             }
+
+            System.out.print("\n\n Player 1's turn:\n\n");
+            player2.guessPlayer(); // player 1 guesses on p2's board
+            System.out.print("\n\nPlayer 1's Board:\n\n");
+            player1.printBoard(false, 10, 10, false);
+            System.out.print("\n\nPlayer 2's Board:\n\n");
+            player2.printBoard(false, 10, 10, true);
+
+            System.out.print("\n\n Player 2's turn:\n\n");
+            player1.guessPlayer(); // p2 guess on p1
+            System.out.print("\n\nPlayer 1's Board:\n\n");
+            player1.printBoard(false, 10, 10, true);
+            System.out.print("\n\nPlayer 2's Board:\n\n");
+            player2.printBoard(false, 10, 10, false);
         }
 
         else if(mode == 1 || mode == 3) // if single player
         {
             System.out.println("\n\nPlayer's Board:\n");
-            player1.printBoard(true, x, x);
+            player1.printBoard(true, x, x, false);
             System.out.println("\n\nComputer's Board:\n");
-            comp.printBoard(true, x, x);
+            comp.printBoard(true, x, x, true);
             do
             {
                 System.out.println("\n\n1 - Manual Board Creation\n2 - Auto Board Creation");
@@ -79,15 +93,28 @@ public class Game
             while(create > 2 || create < 1); 
             if(create == 2)
             {
-                player1.setBoardAuto(); // p1 board gets set automatically
+                player1.setBoardAuto(true); // p1 board gets set automatically
             }
             else if(create == 1)
             {
                 player1.setBoardManual(); // p1 board gets set manually
             }
+
+            System.out.print("\n\n Player's turn:\n\n");
+            player2.guessPlayer(); // player 1 guesses on p2's board
+            System.out.print("\n\nPlayer 1's Board:\n\n");
+            comp.printBoard(false, 10, 10, false);
+            System.out.print("\n\nPlayer 2's Board:\n\n");
+            comp.printBoard(false, 10, 10, true);
+
+            System.out.print("\n\n Computer's turn:\n\n");
+            comp.guessComp(); // c guess on p1
+            System.out.print("\n\nPlayer's Board:\n\n");
+            player1.printBoard(false, 10, 10, true);
+            System.out.print("\n\nComputer's Board:\n\n");
+            comp.printBoard(false, 10, 10, false);
         }
-        player1.play();
-        player1.printBoard(false, 10, 10);
+        
     }
 
     public void text() // introductory text to the game
