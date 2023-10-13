@@ -68,8 +68,8 @@ public class Board
                     System.out.print("\nPeg " + d + " Column: ");
                     col = scan.nextInt();
                 }
-                while(gameBoard[row][col] == '★' && row > 10 && col > 10);
-                gameBoard[row][col] = '★';
+                while(gameBoard[row][col] == '@' && row > 10 && col > 10);
+                gameBoard[row][col] = '@';
                 tracker[row][col] = 'd';
             }
             
@@ -84,8 +84,8 @@ public class Board
                     System.out.print("\nPeg " + s + " Column: ");
                     col = scan.nextInt();
                 }
-                while(gameBoard[row][col] == '★' && row > 10 && col > 10);
-                gameBoard[row][col] = '★';
+                while(gameBoard[row][col] == '@' && row > 10 && col > 10);
+                gameBoard[row][col] = '@';
                 tracker[row][col] = 's';
             }
 
@@ -100,8 +100,8 @@ public class Board
                     System.out.print("\nPeg " + c + " Column: ");
                     col = scan.nextInt();
                 }
-                while(gameBoard[row][col] == '★' && row > 10 && col > 10);
-                gameBoard[row][col] = '★';
+                while(gameBoard[row][col] == '@' && row > 10 && col > 10);
+                gameBoard[row][col] = '@';
                 tracker[row][col] = 'c';
             }
 
@@ -116,8 +116,8 @@ public class Board
                     System.out.print("\nPeg " + b + " Column: ");
                     col = scan.nextInt();
                 }
-                while(gameBoard[row][col] == '★' && row > 10 && col > 10);
-                gameBoard[row][col] = '★';
+                while(gameBoard[row][col] == '@' && row > 10 && col > 10);
+                gameBoard[row][col] = '@';
                 tracker[row][col] = 'b';
             }
 
@@ -132,8 +132,8 @@ public class Board
                     System.out.print("\nPeg " + r + " Column: ");
                     col = scan.nextInt();
                 }
-                while(gameBoard[row][col] == '★' && row > 10 && col > 10);
-                gameBoard[row][col] = '★';
+                while(gameBoard[row][col] == '@' && row > 10 && col > 10);
+                gameBoard[row][col] = '@';
                 tracker[row][col] = 'r';
             }
     }
@@ -321,6 +321,11 @@ public class Board
 
     public void win()
     {
+        if(destroyer == 2)
+        {
+            System.out.print("You sank the destroyer!");
+            destroyer = 0;
+        }
         if(hits1 == 17)
         {
             System.out.println("Congrats! Player 1 wins!");
@@ -335,6 +340,10 @@ public class Board
         {
             System.out.println("Sorry! The computer wins!");
             end = true;
+        }
+        else
+        {
+            play();
         }
     }
 }

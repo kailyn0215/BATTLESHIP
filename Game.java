@@ -67,6 +67,10 @@ public class Game
 
         else if(mode == 1 || mode == 3) // if single player
         {
+            System.out.println("\n\nPlayer's Board:\n");
+            player1.printBoard(true, x, x);
+            System.out.println("\n\nComputer's Board:\n");
+            comp.printBoard(true, x, x);
             do
             {
                 System.out.println("\n\n1 - Manual Board Creation\n2 - Auto Board Creation");
