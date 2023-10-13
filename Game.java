@@ -84,7 +84,7 @@ public class Game
             System.out.println("\n\nPlayer's Board:\n");
             player1.printBoard(true, x, x, false);
             System.out.println("\n\nComputer's Board:\n");
-            comp.printBoard(true, x, x, true);
+            comp.printBoard(true, x, x, false);
             do
             {
                 System.out.println("\n\n1 - Manual Board Creation\n2 - Auto Board Creation");
@@ -103,18 +103,18 @@ public class Game
             System.out.print("\n\n Player's turn:\n\n");
             player2.guessPlayer(); // player 1 guesses on p2's board
             System.out.print("\n\nPlayer 1's Board:\n\n");
-            comp.printBoard(false, 10, 10, false);
+            comp.printBoard(false, x, x, false);
             System.out.print("\n\nPlayer 2's Board:\n\n");
-            comp.printBoard(false, 10, 10, true);
+            comp.printBoard(false, x, x, true);
 
             System.out.print("\n\n Computer's turn:\n\n");
             comp.guessComp(); // c guess on p1
             System.out.print("\n\nPlayer's Board:\n\n");
-            player1.printBoard(false, 10, 10, true);
+            player1.printBoard(false, x, x, true);
             System.out.print("\n\nComputer's Board:\n\n");
-            comp.printBoard(false, 10, 10, false);
+            comp.printBoard(false, x, x, false);
         }
-        
+        // need to keep working on fast mode especially, make it so the numbers of rows + cols match when making the board
     }
 
     public void text() // introductory text to the game
