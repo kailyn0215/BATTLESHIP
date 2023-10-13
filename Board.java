@@ -16,17 +16,16 @@ public class Board
     char[][] gameBoard = new char[numRows][numCols];
 
 
-    //prints the board and sets up default if new game+
-    public void printBoard(boolean start, int numCols, int numRows)
+    public void printBoard(boolean start, int numCols, int numRows) //prints the board and sets up default if new game+
     {
         //gameBoard[3][3] = 1;
         if(numCols == 10)
         {
-            System.out.print("   0  1  2  3  4  5  6  7  8  9");
+            System.out.print("   0  1  2  3  4  5  6  7  8  9"); // adds ten rows if normal sized board
         }
         else
         {
-            System.out.print("   0  1  2  3  4  5  6  7");
+            System.out.print("   0  1  2  3  4  5  6  7"); // adds 8 rows for fast game
         }
         
         for(int r = 0; r < numRows; r++)
@@ -44,8 +43,7 @@ public class Board
     }
 
 
-    //uses user input to set up ships
-    public void setBoardManual()
+    public void setBoardManual() //uses user input to set up ships
     {
         int row;
         int col;
@@ -156,8 +154,8 @@ public class Board
         }
     }
 
-    // allows the user to guess the opponents ships manually
-    public void guessManual() 
+    // allows the user to guess the opponents ships
+    public void guessPlayer()
     {
         Scanner guess = new Scanner(System.in);
         System.out.print("\n\nPlease enter coordinates to guess where your opponents ships are located.\n\nRow: ");
@@ -170,6 +168,11 @@ public class Board
             gameBoard[gR][gC] = 'X';
             // need to add something to keep track off what ship is hit
         }
+    }    
+
+    public void guessComp()
+    {
+        
     }
     
 }
