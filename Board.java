@@ -258,12 +258,8 @@ public class Board
 
     public void play()
     {
-        do
-        {
             guessPlayer();
             guessComp();
-        }
-        while(end = false);
     }
 
     // allows the user to guess the opponents ships
@@ -325,6 +321,26 @@ public class Board
         {
             System.out.print("You sank the destroyer!");
             destroyer = 0;
+        }
+        else if(submarine == 3)
+        {
+            System.out.print("You sank the submarine!");
+            submarine = 0;
+        }
+        else if(crusier == 3)
+        {
+            System.out.print("You sank the crusier!");
+            crusier = 0;
+        }
+        else if(battleship == 4)
+        {
+            System.out.print("You sank the battleship!");
+            battleship = 0;
+        }
+        else if(carrier == 3)
+        {
+            System.out.print("You sank the carrier!");
+            carrier = 0;
         }
         if(hits1 == 17)
         {
