@@ -15,11 +15,12 @@ public class Game
         Scanner start = new Scanner(System.in);
         do
         {
-            System.out.println("\n1 - Single Player\n2 - Double Player\n3 - Fast Mode\n");
+            System.out.println("\n1 - Regular Mode\n2 - Fast Mode\n");
             mode = start.nextInt();
         }
-        while(mode > 3 || mode < 1);
-        if(mode == 3) // fast mode
+        while(mode != 1 && mode != 2); // need to be able to take characters + ask again
+
+        if(mode == 2) // fast mode
         {
             x = 8;
         }
@@ -27,9 +28,8 @@ public class Game
         {
             x = 10;
         }
-        
     
-        if(mode == 2) // if 2 player
+        if(mode == 1) // if 2 player
         {
             System.out.println("\n\nPlayer 1's Board:\n");
             player1.printBoard(true, x, x, false);
@@ -43,7 +43,7 @@ public class Game
             while(create > 2 || create < 1); // while out of bounds
             if(create == 2) // if auto
             {
-                player1.setBoardAuto(true); // p1 board gets set automatically
+                player1.setBoardAuto(true, false); // p1 board gets set automatically
             }
             else if(create == 1) // if manual
             {
@@ -57,7 +57,7 @@ public class Game
             while(create > 2 || create < 1); 
             if(create == 2)
             {
-                player2.setBoardAuto(true); // p2 board gets set automatically
+                player2.setBoardAuto(true, false); // p2 board gets set automatically
             }
             else if(create == 1)
             {
@@ -79,40 +79,17 @@ public class Game
             player2.printBoard(false, 10, 10, false);
         }
 
-        else if(mode == 1 || mode == 3) // if single player
+        else if(mode == 2) // if fast mode
         {
-            System.out.println("\n\nPlayer's Board:\n");
-            player1.printBoard(true, x, x, false);
+            comp.setBoardAuto(false, true);
+
             System.out.println("\n\nComputer's Board:\n");
             comp.printBoard(true, x, x, false);
-            do
-            {
-                System.out.println("\n\n1 - Manual Board Creation\n2 - Auto Board Creation");
-                create = start.nextInt();
-            }
-            while(create > 2 || create < 1); 
-            if(create == 2)
-            {
-                player1.setBoardAuto(true); // p1 board gets set automatically
-            }
-            else if(create == 1)
-            {
-                player1.setBoardManual(); // p1 board gets set manually
-            }
 
             System.out.print("\n\n Player's turn:\n\n");
-            player2.guessPlayer(); // player 1 guesses on p2's board
-            System.out.print("\n\nPlayer 1's Board:\n\n");
-            comp.printBoard(false, x, x, false);
-            System.out.print("\n\nPlayer 2's Board:\n\n");
-            comp.printBoard(false, x, x, true);
-
-            System.out.print("\n\n Computer's turn:\n\n");
-            comp.guessComp(); // c guess on p1
-            System.out.print("\n\nPlayer's Board:\n\n");
-            player1.printBoard(false, x, x, true);
+            comp.guessPlayer(); // player 1 guesses on p2's board
             System.out.print("\n\nComputer's Board:\n\n");
-            comp.printBoard(false, x, x, false);
+            comp.printBoard(false, x, x, true);
         }
         // need to keep working on fast mode especially, make it so the numbers of rows + cols match when making the board
     }

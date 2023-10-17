@@ -156,16 +156,52 @@ public class Board
     }
 
     //sets the board automatically
-    public void setBoardAuto(boolean p)
+    public void setBoardAuto(boolean p, boolean m) // p - if its the player, m - if its fast mode (only first 3 ships)
     {
         // need to continue with the different ships + make it so that they dont collide with each other :( (just didnt have time to fill it out yet)
 
-        // destroyer:
         int row = (int)(Math.random() * 10); // from 0 to 9
         int col = (int)(Math.random() * 10);
         double up = Math.random(); // up down left or right
+        int srow;
+        int scol;
+        int max; // maximum row or col
+
+        // destroyer
+        if(m)
+        {
+            max = 7;
+            while(gameBoard[row][col] == '@' || row > 7 || col > 7)
+            {
+                row = (int)(Math.random() * 10);
+                col = (int)(Math.random() * 10);
+            }
+        }
+        else
+        {
+            max = 10;
+            while(gameBoard[row][col] == '@')
+            {
+                row = (int)(Math.random() * 10);
+                col = (int)(Math.random() * 10);
+            }
+        }
 
         tracker[row][col] = 'd';
+        if(p)
+        {
+            gameBoard[row][col] = '@';
+        }
+
+        if(up < 0.25) // down
+        {
+            if(m && col > max)
+            {
+                // need to add more here
+            }
+        }
+
+        /*tracker[row][col] = 'd';
         if(p = true)
         {
             gameBoard[row][col] = '@';
@@ -362,7 +398,7 @@ public class Board
         if(p = true)
         {
             gameBoard[row][col] = '@';
-        }
+        } */
     }
 
     public void play()
