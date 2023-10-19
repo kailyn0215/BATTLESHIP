@@ -1,10 +1,19 @@
 import java.util.Scanner;
 
+/**
+ * Game holds the game aspect of battleship, such as the instructions and starting piece of the game
+ * 
+ * @author Kailyn Brown B)
+ * 
+ */
+
 public class Game
 {
     public Board player = new Board();
-    
-    //starts the game + prompts the user for game mode + lets them set up their board
+
+    /**
+     * starts the game + prompts the user for game mode + lets them set up their board
+     */
     public void start() 
     {
         
@@ -102,9 +111,12 @@ public class Game
         // need to keep working on fast mode especially, make it so the numbers of rows + cols match when making the board
     }
 
-    public void text() // introductory text to the game
+    /**
+     * introductory text to the game
+     */
+    public void text()
     {
-        System.out.println("Welcome to battleship!!!\nIn the game of battleship your goal is to sink all of your opponents ships and keeping your own afloat.\n\nTo begin, you must set up your ships.\nYou can either set them up manually by entering the rows and columns of each point you would like a ship to be at or you can assign them randomly.\n\nAfter finishing assigning your ships, you will be able to start guessing where your opponents ships are located.\nIf you guess correctly, your opponents grid will have a X in their grid where you guessed correctly. If you guessed incorrectly, a O will appear on their grid instead. \nIf you sink one of your opponents ships, it will tell you by saying 'You sunk my ----!'\nYour goal is to sink all five of your oppenents ships.\n\nReady? Have fun!");
+        System.out.println("Welcome to battleship!!!\nIn the game of battleship your goal is to sink all of your opponents ships and keeping your own afloat.\n\nThere are two different versions of the game: Regular and Fast.\nIn the regular version you must set up your ships.\nYou can either set them up manually by entering the rows and columns of each point you would like a ship to be at or you can assign them randomly.\nIf you set your ships up manually, keep in mind that one ship must stay in a connected line.\nEX) (2,1) (2,2) (2,3) are 3 coordinates in a horizontal line. You can also do your coordinates vertically: (2,3) (3,3) (4,3).\nAfter finishing assigning your ships, you will be able to start guessing where your opponents ships are located.\nIn the fast verison, you won't set up ships but will go straight to guessing where the computer set up their ships.\nIf you guess correctly, your opponents grid will have a X in their grid where you guessed correctly. If you guessed incorrectly, a O will appear on their grid instead.\nIf you sink one of your opponents ships, it will tell you by saying 'You sank the ----!'\nYour goal is to sink all five (or three in fast mode) of your oppenents ships.\n\nReady? Have fun!");
     }
 
     

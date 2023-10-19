@@ -1,6 +1,13 @@
 import java.util.Scanner;
 import java.util.Random;
 
+/**
+ * Board holds the board aspect of the game. It also holds the majority of the code, including auto generating a board, manually generating a board, continuing the game, and guessing where the opponents ships are.
+ * 
+ * @author Kailyn Brown B)
+ * 
+ */
+
 public class Board
 {
     int numRows = 10;
@@ -36,7 +43,14 @@ public class Board
     char[][] tracker1 = new char[numRows][numCols];
     char[][] tracker2 = new char[numRows][numCols]; // keeps track of diff ships maybe ??? cant quite figure out how to do that yet
 
-    // prints the board of the player, prints guess board, + initializes new boards
+    /** 
+     * prints the board of the player, prints guess board, + initializes new boards
+     * @param start - if the board needs to be created (all slots filled with '~')
+     * @param numCols - the number of columns that need to be created
+     * @param numRows - the number of rows that need to be created
+     * @param player - which player's board needs to be printed
+     * @param guess - if its their guess board (doesnt show ships but shows their guesses)
+     */
     public void printBoard(boolean start, int numCols, int numRows, int player, boolean guess)
     {
         //gameBoard[3][3] = 1;
@@ -125,8 +139,10 @@ public class Board
     }
         
     
-
-    // lets the user set the ships manually
+    /**
+     * lets the user set the ships manually
+     * @param player - which player is currently playing
+     */
     public void setBoardManual(int player)
     {
         int row;
@@ -147,7 +163,7 @@ public class Board
                         System.out.print("\nPeg " + d + " Column: ");
                         col = scan.nextInt();
                     }
-                    while(gameBoard1[row][col] == '@' && row > 10 && col > 10);
+                    while(gameBoard1[row][col] == '@' && row > 10 && col > 10); // while it already has a ship or its above 10
                     gameBoard1[row][col] = '@';
                     tracker1[row][col] = 'd';
                 }
@@ -295,8 +311,14 @@ public class Board
             }
     }
 
+    /**
+     * automatically sets the board, given as an option for players and used by computer
+     * @param player - which player is playing 
+     * @param m - which mode is it (true = fast mode)
+     * i wasnt able to get the board to avoid other ships on the board completely, the spawn point cant be the same but when they spread out they can be :(
+     */
     //sets the board automatically
-    public void setBoardAuto(int player, boolean m) // p - if its the player, m - if its fast mode (only first 3 ships)
+    public void setBoardAuto(int player, boolean m)
     {
         // need to continue with the different ships + make it so that they dont collide with each other :( (just didnt have time to fill it out yet)
 
@@ -325,7 +347,7 @@ public class Board
                     up = random.nextBoolean();
                     row = (int)(Math.random() * 8); // chooses a random number between 0 - 7
                     col = (int)(Math.random() * 8);
-                    /*for(int l = 0; l <= 5; l++) // if the point is surrounded
+                    /*for(int l = 0; l < letters.length() - 1; l++) // if the point is surrounded
                     {
                         if(tracker2[row + 1][col] == letters.charAt(f) && up)
                         {
@@ -398,7 +420,7 @@ public class Board
                     up = random.nextBoolean();
                     row = (int)(Math.random() * 10); // chooses a random number between 0 - 9
                     col = (int)(Math.random() * 10);
-                    /*for(int l = 0; l < 6; l++) // if the point is surrounded
+                    /*for(int l = 0; l < letters.length() - 1; l++) // if the point is surrounded
                     {
                         if(tracker1[row + 1][col] == letters.charAt(r) && up)
                         {
@@ -555,7 +577,10 @@ public class Board
         }
     }
 
-    // allows the user to guess the opponents ships
+    /**
+     * allows the user to guess where their opponents ships are
+     * @param player - which player is playing
+     */
     public void guessPlayer(int player)
     {
         Scanner guess = new Scanner(System.in);
@@ -660,8 +685,12 @@ public class Board
         win();    
     }    
     
-    // continuation of start in game.java, plays the different versions of the game until someone wins
-    public void play(boolean m) 
+    /**
+     * continuation of start in game.java, plays the different versions of the game until someone wins
+     * @param m - which mode is it (true = fast)
+     */
+    public void play(boolean m)
+    { 
         if(m)
         {
             do
@@ -698,7 +727,9 @@ public class Board
         }
     }
 
-    // tells the user if they sink a ship or if game ends
+    /**
+     * tells the user if they sink a ship or if game ends
+     */
     public void win() 
     {
         if(destroyer == 2 || destroyer2 == 2)

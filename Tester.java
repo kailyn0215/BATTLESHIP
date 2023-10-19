@@ -1,6 +1,15 @@
+/**
+ * Tester is the main class of battleship where we run the code
+ * 
+ * @author Kailyn Brown B)
+ * 
+ */
 public class Tester 
 {   
-    // main method
+
+    /**
+     * @param args (main method)     * 
+     */
     public static void main(String[] args) 
     {
         Game y = new Game();
