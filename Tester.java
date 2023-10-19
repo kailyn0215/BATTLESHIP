@@ -1,7 +1,6 @@
-import java.util.Scanner;
-
 public class Tester 
-{
+{   
+    // main method
     public static void main(String[] args) 
     {
         Game y = new Game();
